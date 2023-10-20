@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Surprising interface</title>
+    <style>
+      body {
+        background-image: url("soil.jpg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        color: #ffffff; /* Set text color to white */
+      }
+      .random-image {
+        position: absolute;
+        display: none;
+        width: 300px;
+        height: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>find a cool bug!</h1>
+    go ahead.. dig around the soil
+    <img src="" alt="Random Image" class="random-image" id="randomImage" />
+
+    <script>
+      // Array of image paths
+      var images = [
+        "banjobug.jpg",
+        "housecentipede.jpg",
+        "snailscan.jpg",
+        "cutiebug.jpg",
+        "bugdance.jpg",
+        "caterpillar.jpg",
+        "bugdraw.jpg",
+      ];
+
+      // Function to get a random position on the screen
+      function getRandomPosition() {
+        var x = window.innerWidth - 200; // Adjust this value based on your image width
+        var y = window.innerHeight - 200; // Adjust this value based on your image height
+        var randomX = Math.floor(Math.random() * x);
+        var randomY = Math.floor(Math.random() * y);
+        return [randomX, randomY];
+      }
+
+      // Function to show a randomly selected image
+      function showRandomImage() {
+        var image = document.getElementById("randomImage");
+        var [x, y] = getRandomPosition();
+        var randomImagePath = images[Math.floor(Math.random() * images.length)];
+
+        // Set the source and position of the image
+        image.src = randomImagePath;
+        image.style.left = x + "px";
+        image.style.top = y + "px";
+        image.style.display = "block";
+      }
+
+      // Attach the showRandomImage function to the body's onmousemove event
+      document.body.onmousemove = showRandomImage;
+    </script>
+  </body>
+</html>
